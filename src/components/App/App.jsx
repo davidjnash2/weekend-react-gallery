@@ -2,13 +2,12 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-// import GalleryList from '../GalleryList/GalleryList';
-// import GalleryItem from '../GalleryItem/GalleryItem';
-
+import GalleryItem from '../GalleryItem/GalleryItem';
+import GalleryList from '../GalleryList/GalleryList';
 
 function App() {
 
-  const [GalleryList, setGalleryList] = useState([]);
+  const [galleryList, setGalleryList] = useState([]);
 
   useEffect(()=>{
       getGalleryItems()
@@ -25,22 +24,9 @@ function App() {
       });
   }
 
-  console.log ('in Appjsx, and GalleryList is:', GalleryList);
+  console.log ('in Appjsx, and GalleryList is:', galleryList);
   
-  // function GalleryItem({ item, getGalleryItems }) {
-	
-    const [flip, setFlip] = useState(false);
-
-    const likeItem = () => {
-		axios.put(`/gallery/like/${item.id}`)
-			.then((response) => {
-				console.log(response);
-				getGalleryItems();
-			}).catch((error) => {
-				console.log(error);
-			});
-	// };
-
+  
 
 
 
@@ -51,33 +37,13 @@ function App() {
       <header className="App-header">
         <h1 className="App-title">Gallery of My Life</h1>
       </header>
-      {/* <GalleryList GalleryList={GalleryList} getGalleryItems={getGalleryItems}/> */}
-     
-      {/* <> */}
 			<div>
-                <h3>My Gallery</h3>
-				
+        <h3>My Gallery</h3>
 			</div>
-			<div>
-				{GalleryList.map((item) => (
-					<GalleryItem key={item.id} item={item} getGalleryItems={getGalleryItems}/>
-				))}
-			</div>
-		{/* </>
-      <> */}
-		<div>
-            <img
-			    onClick={() => setFlip(!flip)}
-                src={flip ?  item.path : item.description}/>
-        </div>
-		<div> 
-            <button onClick={likeItem}>❤️❤️❤️❤️❤️❤️</button>
-			<p>{item.likes} people ❤️ this!</p>
-		</div>
-        {/* </> */}
-    
+      <GalleryList galleryList={galleryList} getGalleryItems={getGalleryItems} />
+		
     </div>
   );
 }
-}
+
 export default App;

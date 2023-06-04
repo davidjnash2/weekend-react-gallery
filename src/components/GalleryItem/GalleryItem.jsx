@@ -1,39 +1,38 @@
-// import axios from 'axios';
-// import { useState } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
 
 
-// function GalleryItem({ item, getGalleryItems }) {
+function GalleryItem({ item, getGalleryItems }) {
 	
-//     const [flip, setFlip] = useState(false);
+    const [clicked, setClick] = useState(true);
 
-//     const likeItem = () => {
-// 		axios.put(`/gallery/like/${item.id}`)
-// 			.then((response) => {
-// 				console.log(response);
-// 				getGalleryItems();
-// 			}).catch((error) => {
-// 				console.log(error);
-// 			});
-// 	};
+    const likeItem = () => {
+		axios.put(`/gallery/like/${item.id}`)
+			.then((response) => {
+				console.log(response);
+				getGalleryItems();
+			}).catch((error) => {
+				console.log(error);
+			});
+	};
 
-//     console.log('in GalleryItem function on GalleryItemjsx, and item is:', item);
+    console.log('in GalleryItem function on GalleryItemjsx, and item is:', item);
 
-//    return (
-//         <>
-// 		<div>
-//             <img
-// 			    onClick={() => setFlip(!flip)}
-//                 src={flip ?  item.path : item.description}/>
-//         </div>
-// 		<div> 
-//             <button onClick={likeItem}>❤️❤️❤️❤️❤️❤️</button>
-// 			<p>{item.likes} people ❤️ this!</p>
-// 		</div>
-//         </>
-// 	);
-// }
-
+   return (
+        <>
+		<div onClick={()=>setClick(!clicked)} >{clicked ? 
+			    (<img src={item.path}/>) :
+          (<div>{item.description}</div>)}
+        </div>
+        <div>
+          <div><button onClick={likeItem}>LIKE</button></div>
+        <p>{item.likes}</p>
+        </div>
+        </>
+	);
+}
 
 
 
-// export default GalleryItem;
+
+export default GalleryItem;
