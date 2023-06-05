@@ -25,8 +25,8 @@ function GalleryItem({ item, getGalleryItems }) {
           (<div>{item.description}</div>)}
         </div>
         <div>
-          <div><button onClick={likeItem}>LIKE</button></div>
-        <p>{item.likes}</p>
+          <div><button onClick={likeItem}>❤️❤️❤️❤️❤️</button></div>
+        <p>{item.likes} people love this</p>
         </div>
         </>
 	);
